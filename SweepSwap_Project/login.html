@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sweep Spot</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<style>
+  
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+
+	hr {
+		border: 1px solid #f1f1f1;
+		margin-bottom: 25px;
+	}
+
+	/* Add padding to container elements */
+	.container {
+		padding: 16px;
+	}
+
+	h2 {
+		text-align: center;
+	}
+
+	a.block {
+		display: block;
+		width: 50%;
+		margin: auto;
+	}
+  
+	</style>
+</head>
+<body>
+	<form action="form.php" method ="post">
+		<div class="container">
+			<h2>Sweep Spot</h2>
+			<hr>
+
+			<div class="form-group">
+				<label for="email"><b>Email</b></label>
+				<input type="text" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+			</div>
+
+			<div class="form-group">
+				<label for="psw"><b>Password</b></label>
+				<input type="password" class="form-control" id="psw" placeholder="Enter Password" name="psw" required>
+			</div>
+
+			<div class="form-check">
+				<input type="checkbox" class="form-check-input" id="remember" checked="checked" name="remember">
+				<label class="form-check-label" for="remember">Remember me</label>
+			</div>
+
+			<div class="row justify-content-center mt-3">
+				<div class="col-4">
+					<button type="submit" class="btn btn-success btn-block">Sign In</button>
+				</div>
+				<div class="col-4">
+					<button type="button" class="btn btn-secondary btn-block" id="register-btn">Register</button>
+				</div>
+			</div>
+			<div class="row justify-content-center mt-3">
+				<div class="col-4">
+					<button type="button" class="btn btn-primary btn-block" id="back-btn">Back</button>
+				</div>
+				<div class="col-4">
+					<button type="button" class="btn btn-info btn-block" id="forgot-password-btn">Forgot Password</button>
+				</div>
+				<div class="col-4">
+					<button type="button" class="btn btn-secondary btn-block" id="skip-btn" onclick="window.location.href='main.html'">Skip</button>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<script>
+		// redirect to signupLogin.html when register button is clicked
+		$("#register-btn").on("click", function() {
+			window.location.href = "signupLogin.html";
+		});
+
+		$("#back-btn").on("click", function() {
+			window.location.href = "index.html";
+		});
+
+    $("#skip-btn").on("click", function() {
+			window.location.href = "main.html";
+		});
+	
+  </script>
+  </body>
+  </html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweepSpot Signup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        hr {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <form action="/signup" method="POST" class="container my-5">
+        <h1 class="text-center">Sign Up</h1>
+        <p class="text-center">Please fill in this form to create an account.</p>
+        <hr>
+
+        <div class="form-group">
+            <label for="email"><b>Email</b></label>
+            <input type="text" class="form-control" placeholder="Enter Email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="psw"><b>Password</b></label>
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+        </div>
+
+        <div class="form-group">
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" class="form-control" placeholder="Repeat Password" name="psw-repeat" required>
+        </div>
+
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" checked="checked" name="remember">
+            <label class="form-check-label" for="remember">Remember me</label>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <a href="login.html" class="btn btn-primary btn-block">Back to Login</a>
+            </div>
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+            </div>
+        </div>
+    </form>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+      const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const MongoClient = require('mongodb').MongoClient;
+
+const url = 'mongodb://localhost:27017/SweepSpot';
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+// Serve the static files from the public directory
+app.use(express.static(__dirname + '/public'));
+
+// Serve the signup page
+app.get('/signup', function(req, res) {
+  res.sendFile(__dirname + '/public/signupLogin.html');
+});
+
+// Handle form submission
+app.post('/signup', function(req, res) {
+  // Connect to MongoDB
+  MongoClient.connect(url, function(err, client) {
+      if (err) throw err;
+
+      // Get the database
+      const db = client.db('SweepSpot');
+
+      // Insert the user data into the "Registration" collection
+      db.collection('Registration').insertOne(req.body, function(err, result) {
+          if (err) throw err;
+          console.log('User registered successfully!');
+          res.redirect('/login.html');
+          client.close();
+      });
+  });
+});
+
+// Start the server
+app.listen(3000, function() {
+  console.log('Server started on port 3000');
+});
+
+  </script>
+</body>
+</html>

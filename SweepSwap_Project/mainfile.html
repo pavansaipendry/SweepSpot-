@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sweep Spot</title>
+    <meta name="viewport" content="width=350, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f5f5;
+      }
+  
+      hr {
+        border: none;
+        height: 2px;
+        background-color: #ccc;
+        margin-bottom: 25px;
+      }
+  
+      /* Add padding to container elements */
+      .container {
+        padding: 16px;
+      }
+  
+      h1, h2 {
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        text-shadow: 2px 2px #fff;
+      }
+  
+      h1 {
+        font-size: 48px;
+      }
+  
+      h2 {
+        font-size: 36px;
+        margin-bottom: 25px;
+      }
+  
+      input[type="text"], input[type="file"], button {
+        border-radius: 20px;
+        border: none;
+        background-color: #fff;
+        padding: 10px 20px;
+        box-shadow: 2px 2px 5px #ccc;
+      }
+      .btn-primary {
+    background-color: blue;
+    border-color: green;
+         }
+  
+  .btn-primary:hover {
+    background-color: green;
+    border-color: blue;
+  }
+  
+      input[type="text"]::placeholder {
+        color: #aaa;
+      }
+  
+      input[type="text"]:focus, input[type="file"]:focus, button:focus {
+        outline: none;
+        box-shadow: 2px 2px 10px #bbb;
+      }
+  
+      .card {
+        box-shadow: 2px 2px 10px #bbb;
+      }
+  
+      .card-title, .card-text {
+        color: #555;
+      }
+  
+      .btn-primary {
+        background-color: #6c757d;
+        border: none;
+      }
+  
+      .btn-primary:hover {
+        background-color: #5a6268;
+      }
+  
+      p.coordinates {
+        font-family: 'Times New Roman', Times, serif;
+      }
+  
+      /* Position the logout button at the top right corner */
+      .logout {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        border-radius: 20px;
+        border: none;
+        background-color: #6c757d;
+        color: #fff;
+        padding: 10px 20px;
+        box-shadow: 2px 2px 5px #ccc;
+      }
+  
+      .logout:hover {
+        background-color: #5a6268;
+  
+      }
+      
+  
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Sweep Spot</h2>
+      <hr />
+      <!-- Logout button -->
+      <div style="position: absolute; top: 450px; right: 200px">
+        <form action="index.html">
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+      </div>
+
+      <!-- Location input -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="location-input"
+              placeholder="Enter location"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Location select -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <div class="input-group">
+            <select class="custom-select" id="location-select">
+
+              <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+              <option value="Kollam">Kollam</option>
+              <option value="Pathanamthitta">Pathanamthitta</option>
+              <option value="Alappuzha">Alappuzha</option>
+              <option value="Kottayam">Kottayam</option>
+              <option value="Idukki">Idukki</option>
+              <option value="Ernakulam">Ernakulam</option>
+              <option value="Thrissur">Thrissur</option>
+              <option value="Palakkad">Palakkad</option>
+              <option value="Malappuram">Malappuram</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Wayanad">Wayanad</option>
+              <option value="Kannur">Kannur</option>
+              <option value="Kasaragod">Kasaragod</option>
+              <option value="Attingal">Attingal</option>
+              <option value="Nedumangad">Nedumangad</option>
+              <option value="Adoor">Adoor</option>
+              <option value="Pathanamthitta">Pathanamthitta</option>
+              <option value="Pandalam">Pandalam</option>
+              <option value="Chengannur">Chengannur</option>
+              <option value="Mavelikkara">Mavelikkara</option>
+              <option value="Harippad">Harippad</option>
+              <option value="Cherthala">Cherthala</option>
+              <option value="Kayamkulam">Kayamkulam</option>
+              <option value="Kottayam">Kottayam</option>
+              <option value="Pala">Pala</option>
+              <option value="Vaikom">Vaikom</option>
+              <option value="Kanjirappally">Kanjirappally</option>
+              <option value="Thodupuzha">Thodupuzha</option>
+              <option value="Muvattupuzha">Muvattupuzha</option>
+              <option value="Perumbavoor">Perumbavoor</option>
+              <option value="Kothamangalam">Kothamangalam</option>
+              <option value="Kunnathunad">Kunnathunad</option>
+              <option value="Aluva">Aluva</option>
+              <option value="Kochi">Kochi</option>
+              <option value="Thripunithura">Thripunithura</option>
+              <option value="Kanayannur">Kanayannur</option>
+              <option value="Paravur">Paravur</option>
+              <option value="Munnar">Munnar</option>
+              <option value="Adimali">Adimali</option>
+              <option value="Devikulam">Devikulam</option>
+              <option value="Thodupuzha">Thodupuzha</option>
+              <option value="Thrissur">Thrissur</option>
+              <option value="Kodungallur">Kodungallur</option>
+              <option value="Chalakudy">Chalakudy</option>
+              <option value="Kunnamkulam">Kunnamkulam</option>
+              <option value="Guruvayur">Guruvayur</option>
+              <option value="Wadakkanchery">Wadakkanchery</option>
+              <option value="Palakkad">Palakkad</option>
+              <option value="Ottappalam">Ottappalam</option>
+              <option value="Shornur">Shornur</option>
+              <option value="Malappuram">Malappuram</option>
+              <option value="Perinthalmanna">Perinthalmanna</option>
+              <option value="Ponnani">Ponnani</option>
+              <option value="Tirur">Tirur</option>
+              <option value="Nilambur">Nilambur</option>
+              <option value="Kozhikode">Kozhikode</option>
+              <option value="Vadakara">Vadakara</option>
+              <option value="Koyilandy">Koyilandy</option>
+              <option value="Thamarassery">Thamarassery</option>
+              <option value="Wayanad">Wayanad</option>
+              <option value="Mananthavady">Mananthavady</option>
+              <option value="Sulthan Bathery">Sulthan Bathery</option>
+              <option value="Kannur">Kannur</option>
+              <option value="Thalassery">Thalassery</option>
+              <option value="Iritty">Iritty</option>
+              <option value="Payyannur">Payyannur</option>
+              <option value="Kasaragod">Kasaragod</option>
+              <option value="Kanhangad">Kanhangad</option>
+              <option value="Kasaragod">Kasaragod</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload card -->
+      <div class="row justify-content-center mt-3">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Upload</h5>
+              <p class="card-text">Click here to open file manager</p>
+              <input type="file" id="image" accept="image/*" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <button onclick="getLocation()">Get Your Coordinates</button>
+      <p id="demo"></p>
+      <button onclick="getNearestMunicipality()">
+        Find Nearest Municipality
+      </button>
+      <p id="nearest-municipality"></p>
+
+      <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <script>
+      const client_secret = "c792d6f5d25b9f3c53f9c44fb7093fff835f3cba";
+      const client_id = "349f00b59909e49";
+
+      const apiUrl = "https://api.imgur.com/3/image/";
+
+      var api_link;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const file = document.getElementById("image");
+
+        file.addEventListener("change", (ev) => {
+          const formdata = new FormData();
+          formdata.append("image", ev.target.files[0]);
+          fetch(apiUrl, {
+            method: "post",
+            headers: {
+              Authorization: "Client-ID 349f00b59909e49",
+            },
+            body: formdata,
+          })
+            .then((data) => data.json())
+            .then((data) => {
+              var link = data.data.link;
+              console.log(link);
+              api_link = link;
+            });
+        });
+      });
+
+      var x = document.getElementById("demo");
+      var latitude = null;
+      var longitude = null;
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+      }
+
+      function showPosition(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+        var inputField = document.getElementById("location-input");
+        inputField.value ="your location is "+ latitude + ", " + longitude;
+        // inputField.value ="your nearest municiplaity is "+ name ;
+      }
+      
+      var municipalities = [
+        {
+          name: "Thiruvananthapuram",
+          latitude: 8.5241,
+          longitude: 76.9366,
+        },
+        { name: "Attingal", latitude: 8.6896, longitude: 76.8152 },
+        { name: "Nedumangad", latitude: 8.605, longitude: 77.0037 },
+        { name: "Neyyattinkara", latitude: 8.3993, longitude: 77.0811 },
+        { name: "Kollam", latitude: 8.8932, longitude: 76.6141 },
+        { name: "Pathanamthitta", latitude: 9.2648, longitude: 76.7873 },
+        { name: "Adoor", latitude: 9.1805, longitude: 76.7872 },
+        { name: "Pandalam", latitude: 9.2462, longitude: 76.6199 },
+        { name: "Alappuzha", latitude: 9.4981, longitude: 76.3388 },
+        { name: "Chengannur", latitude: 9.3185, longitude: 76.6251 },
+        { name: "Mavelikkara", latitude: 9.2397, longitude: 76.5483 },
+        { name: "Kayamkulam", latitude: 9.1829, longitude: 76.5014 },
+        { name: "Kottayam", latitude: 9.5916, longitude: 76.5222 },
+        { name: "Changanassery", latitude: 9.4456, longitude: 76.5387 },
+        { name: "Vaikom", latitude: 9.7475, longitude: 76.3943 },
+        { name: "Kanjirappally", latitude: 9.4583, longitude: 76.7774 },
+        { name: "Idukki", latitude: 9.8498, longitude: 76.973 },
+        { name: "Thodupuzha", latitude: 9.9167, longitude: 76.7164 },
+        { name: "Muvattupuzha", latitude: 9.9838, longitude: 76.5737 },
+        { name: "Ernakulam", latitude: 9.9312, longitude: 76.2673 },
+        { name: "Kothamangalam", latitude: 10.0619, longitude: 76.6359 },
+        { name: "Perumbavoor", latitude: 10.106, longitude: 76.4739 },
+        { name: "Aluva", latitude: 10.1076, longitude: 76.3534 },
+        { name: "Angamaly", latitude: 10.2036, longitude: 76.382 },
+        { name: "Thrissur", latitude: 10.5276, longitude: 76.2144 },
+        { name: "Kodungallur", latitude: 10.2289, longitude: 76.1996 },
+        { name: "Chalakudy", latitude: 10.3093, longitude: 76.3363 },
+        { name: "Kunnamkulam", latitude: 10.6502, longitude: 76.0701 },
+        { name: "Guruvayur", latitude: 10.597, longitude: 76.0401 },
+        { name: "Palakkad", latitude: 10.7867, longitude: 76.6548 },
+        { name: "Ottapalam", latitude: 10.7726, longitude: 76.3796 },
+        { name: "Shoranur", latitude: 10.762, longitude: 76.2823 },
+        { name: "Pattambi", latitude: 10.7756, longitude: 76.2634 },
+        { name: "Malappuram", latitude: 11.0739, longitude: 76.074 },
+        { name: "Manjeri", latitude: 11.1192, longitude: 76.1185 },
+        { name: "Perinthalmanna", latitude: 10.9816, longitude: 76.2176 },
+        { name: "Nilambur", latitude: 11.2826, longitude: 76.231 },
+        { name: "Kozhikode", latitude: 11.2588, longitude: 75.7804 },
+        { name: "Vatakara", latitude: 11.609, longitude: 75.5884 },
+        { name: "Koyilandy", latitude: 11.4325, longitude: 75.6992 },
+        { name: "Thalassery", latitude: 11.7477, longitude: 75.492 },
+        { name: "Kannur", latitude: 11.8745, longitude: 75.3704 },
+        { name: "Thaliparamba", latitude: 12.032, longitude: 75.3576 },
+        { name: "Payyannur", latitude: 12.1016, longitude: 75.201 },
+        { name: "Kasaragod", latitude: 12.5069, longitude: 74.9873 },
+      ];
+
+      var nearestMunicipality = "";
+
+      function getNearestMunicipality() {
+        var locationSelect = document.getElementById("location-select");
+        var selectedLocation = locationSelect.value;
+
+        if (selectedLocation === "manual") {
+          var manualCoordinates = prompt(
+            "Enter the coordinates (latitude, longitude) of the municipality:"
+          );
+
+          if (manualCoordinates) {
+            var [manualLatitude, manualLongitude] =
+              manualCoordinates.split(",");
+            showNearestMunicipality(
+              manualLatitude.trim(),
+              manualLongitude.trim()
+            );
+          } else {
+            alert("Invalid coordinates. Please try again.");
+          }
+        } else {
+          nearestMunicipality = findNearestMunicipality(
+            latitude,
+            longitude,
+            municipalities
+          );
+          var distance = getDistance(
+            latitude,
+            longitude,
+            nearestMunicipality.latitude,
+            nearestMunicipality.longitude
+          );
+          showNearestMunicipality(
+            nearestMunicipality.name,
+            nearestMunicipality.latitude,
+            nearestMunicipality.longitude,
+            distance
+          );
+        }
+      }
+
+      function findNearestMunicipality(latitude, longitude, municipalities) {
+        var nearestMunicipality = null;
+        var minDistance = Number.MAX_VALUE;
+
+        for (var i = 0; i < municipalities.length; i++) {
+          var municipality = municipalities[i];
+          var distance = getDistance(
+            latitude,
+            longitude,
+            municipality.latitude,
+            municipality.longitude
+          );
+
+          if (distance < minDistance) {
+            minDistance = distance;
+            nearestMunicipality = municipality;
+          }
+        }
+
+        return nearestMunicipality;
+      }
+
+      function showNearestMunicipality(name, latitude, longitude, distance) {
+        var nearestMunicipalityElement = document.getElementById(
+          "nearest-municipality"
+        );
+        nearestMunicipalityElement.innerHTML = "Nearest Municipality:<br>";
+        nearestMunicipalityElement.innerHTML += "Name: " + name + "<br>";
+        nearestMunicipalityElement.innerHTML +=
+          "Latitude: " + latitude + "<br>";
+        nearestMunicipalityElement.innerHTML +=
+          "Longitude: " + longitude + "<br>";
+        nearestMunicipalityElement.innerHTML +=
+          "Distance: " + distance.toFixed(2) + " km";
+      }
+
+      function getDistance(lat1, lon1, lat2, lon2) {
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2 - lat1);
+        var dLon = deg2rad(lon2 - lon1);
+        var a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(deg2rad(lat1)) *
+            Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+      }
+      function showPosition(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        x.innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
+        var inputField = document.getElementById("location-input");
+        inputField.value ="your location is "+ latitude + ", " + longitude;
+        // inputField.value ="your nearest municiplaity is "+ name ;
+      }
+
+      function deg2rad(deg) {
+        return deg * (Math.PI / 180);
+      }
+
+      function submitForm() {
+        var locationInput = document.getElementById("location-input");
+        var imageInput = document.getElementById("image");
+        var location = locationInput.value;
+        var image = imageInput.files[0];
+
+        // Create a new database entry
+        var formData = new FormData();
+        formData.append("location", location);
+        formData.append("image", image);
+
+        // Send the data to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/submit-form");
+        xhr.send(formData);
+
+        const lat1 = latitude;
+        const long1 = longitude;
+
+        const lat2 = nearestMunicipality.latitude;
+        const long2 = nearestMunicipality.longitude;
+        const name = nearestMunicipality.name;
+
+        console.log(api_link);
+
+        var data = {
+          currentLatitude: lat1,
+          currentLongitude: long1,
+          municipalityLatitude: lat2,
+          municipalityLongitude: long2,
+          municipalityName: name,
+          imageLink: api_link
+        };
+
+        var jsonData = JSON.stringify(data);
+
+        var key = `json_${Date.now()}`;
+
+        localStorage.setItem(key, jsonData);
+
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key.startsWith("json_")) {
+            const jsonData = localStorage.getItem(key);
+            const parsedData = JSON.parse(jsonData);
+            console.log(parsedData);
+          }
+        }
+
+        alert("Form submitted!");
+      }
+    </script>
+  </body>
+</html>

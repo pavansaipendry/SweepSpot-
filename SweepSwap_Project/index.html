@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sweep Spot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #fffafa;
+      background-color: #f8f9fa;
+    }
+	body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #1d1c1c;
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #c8ced2;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+
+    button {
+      padding: 50px 20px;
+      border: none;
+      border-radius: 50px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    #quote {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .skip {
+			position: absolute;
+			top: 16px;
+			right: 16px;
+			border-radius: 20px;
+			border: none;
+			background-color: #6c757d;
+			color: #fff;
+			padding: 10px 20px;
+			box-shadow: 2px 2px 5px #ccc;
+		}
+
+		.skip:hover {
+			background-color: #5a6268;
+		}
+  </style>
+  <script>
+    $(document).ready(function(){
+      var quotes = [
+        "The greatest threat to our planet is the belief that someone else will save it. - Robert Swan",
+        "The environment is where we all meet; where all have a mutual interest; it is the one thing all of us share. - Lady Bird Johnson",
+        "The environment and the economy are really both two sides of the same coin. If we cannot sustain the environment, we cannot sustain ourselves. - Wangari Maathai",
+        "We won’t have a society if we destroy the environment. - Margaret Mead",
+        "The Earth is what we all have in common. - Wendell Berry",
+        "Cleanliness is not a matter of instinct; it is a matter of education, and like most great things, you must cultivate a taste for it. - Benjamin Disraeli",
+        "Cleanliness is next to godliness. - John Wesley",
+        "Cleanliness and order are not matters of instinct; they are matters of education, and like most great things, you must cultivate a taste for them. - Jawaharlal Nehru",
+        "It is our collective and individual responsibility to preserve and tend to the environment in which we all live.- Dalai Lama",
+        "The environment is where we all meet; where all have a mutual interest; it is the one thing all of us share.- Lady Bird Johnson",
+        "Cleanliness and order are not matters of instinct; they are matters of education and like most great things, you must cultivate a taste for them.- Mahatma Gandhi",
+        "We do not inherit the earth from our ancestors, we borrow it from our children - Native American Proverb",
+        "It is our duty to protect and preserve our environment for future generations.- Unknown",
+        "A clean environment is a human right like any other. It is therefore part of our responsibility towards others to ensure that the world we pass on is as healthy, if not healthier, than we found it - Pope Francis",
+        "Take care of the earth and she will take care of you.- Unknown",
+        "The greatest threat to our planet is the belief that someone else will save it. - Robert Swan",
+        "We do not inherit the earth from our ancestors, we borrow it from our children.- Native American Proverb",
+        "The environment is where we all meet; where we all have a mutual interest; it is the one thing all of us share. - Lady Bird Johnson",
+        "We never know the worth of water till the well is dry. - Thomas Fuller",
+        "The environment and the economy are really both two sides of the same coin. If we cannot sustain the environment, we cannot sustain ourselves.- Wangari Maathai",
+        "The environment is everything that isn't me. - Albert Einstein",
+        "Nature is not a place to visit. It is home. - Gary Snyder",
+        "The environment is no one's property to destroy; it's everyone's responsibility to protect. - Mohith Agadi",
+        "Cleanliness and order are not matters of instinct; they are matters of education, and like most great things, you must cultivate a taste for them. - Benjamin Disraeli",
+        "Let us not take this planet for granted. I do not take tonight for granted. - Leonardo DiCaprio"
+      ];
+      var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      $("#quote").text(randomQuote);
+      
+     
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Sweep Spot</h1>
+  </header>
+  <div style="position: absolute; top: 445px; right: 350px;">
+    <form action="main.html">
+      <button type="submit" class="btn btn-primary">Skip</button>
+    </form>
+  </div>
+  <div id="quote"></div>
+  <div id="main">
+    <button class="btn btn-primary" onclick="window.location.href='login.html'">User-Login</button>
+    <button class="btn btn-success" onclick="window.location.href='admin.html'">Admin-Login</button>
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+		<div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title">Modal Title</h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <p>Modal body text goes here.</p>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		  </div>
+
+		  
+	</div>
+  </div>
+</body>
+</html>
